@@ -27,10 +27,10 @@ module.exports = (robot) ->
 
 		request 'http://foodtruckfiesta.com/dc-food-truck-list/', (error, response, html) ->
   			if !error and response.statusCode == 200
-    			$ = cheerio.load(body)
+    			$ = cheerio.load(html)
     			$('div.post-content > h2').each ->
       				vendors.push $(this).text()
       				return
       		return
-      		
+
   			msg.send vendors
