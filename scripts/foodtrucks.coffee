@@ -8,7 +8,8 @@
 #   None
 #
 # Commands:
-#	lunchbot foodtruck-franklin - Returns all food trucks currently at Franklin Square.
+#   lunchbot foodtruck-franklin - Returns all food trucks currently at Franklin Square.
+#   lunchbot foodtruck-farragut - Returns all food trucks currently at Farragut Square.
 #
 # Author:
 #   kyle_conrad
@@ -35,6 +36,27 @@ module.exports = (robot) ->
 
         format = (ary) ->
           result = "Here are the food trucks hanging out at Franklin Square today:\n"
+          for index, vendor of ary
+            result += "#{ vendor }\n"
+          return result
+
+        msg.send format(vendors)
+
+
+  robot.hear /foodtruck-farragut/i, (msg) ->
+
+    vendors = []
+
+    request 'http://foodtruckfiesta.com/dc-food-truck-list/', (error, response, html) ->
+      if !error and response.statusCode == 200
+        $ = cheerio.load(html)
+
+        $('h2:contains("DC - Farragut Square")').nextUntil('h2').find('span').each ->
+          vendors.push $(this).text()
+          return
+
+        format = (ary) ->
+          result = "Here are the food trucks hanging out at Farragut Square today:\n"
           for index, vendor of ary
             result += "#{ vendor }\n"
           return result
