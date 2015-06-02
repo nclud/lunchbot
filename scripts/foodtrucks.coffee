@@ -1,3 +1,17 @@
+# Description:
+#   Tells you what food trucks are nearby, simple as that.
+#
+# Dependencies:
+#   "scraper": "0.0.9"
+#
+# Configuration:
+#   None
+#
+# Commands:
+#
+# Author:
+#   kyle_conrad
+
 scraper = require('scraper')
 
 module.exports = (robot) ->
