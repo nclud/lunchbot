@@ -8,8 +8,8 @@
 #   None
 #
 # Commands:
-#   lunchbot foodtruck-franklin - Returns all food trucks currently at Franklin Square.
-#   lunchbot foodtruck-farragut - Returns all food trucks currently at Farragut Square.
+#   lunchbot franklin - Returns all food trucks currently at Franklin Square.
+#   lunchbot farragut - Returns all food trucks currently at Farragut Square.
 #
 # Author:
 #   kyle_conrad
@@ -22,7 +22,7 @@ cheerio = require('cheerio')
 
 module.exports = (robot) ->
 
-  robot.hear /foodtruck-franklin/i, (msg) ->
+  robot.hear /franklin/i, (msg) ->
 
     vendors = []
 
@@ -43,7 +43,7 @@ module.exports = (robot) ->
         msg.send format(vendors)
 
 
-  robot.hear /foodtruck-farragut/i, (msg) ->
+  robot.hear /farragut/i, (msg) ->
 
     vendors = []
 
