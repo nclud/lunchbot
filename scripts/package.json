@@ -1,0 +1,32 @@
+{
+  "name": "dcfoodtrucks",
+  "description": "A hubot script for retrieving info about foodtrucks currently in DC, MD and VA",
+  "author": {
+    "name": "Sean Soper",
+    "email": "sean.soper@gmail.com",
+    "url": "http://seansoper.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ssoper/dcfoodtrucks.git"
+  },
+  "bugs": {
+    "email": "sean.soper@gmail.com",
+    "url": "https://github.com/ssoper/dcfoodtrucks/issues"
+  },
+  "version": "0.0.1",
+  "keywords": ["hubot", "campfire", "food trucks", "washington dc", "dc", "maryland", "viriginia"],
+  "dependencies": {
+    "zombie": "2.x",
+    "moment": "1.7.x"
+  },
+  "devDependencies": {
+    "hubot": "2.3.x"
+  }
+}
