@@ -33,5 +33,11 @@ module.exports = (robot) ->
           vendors.push $(this).text()
           return
 
-        msg.send vendors
+        format = (ary) ->
+          result = "Here's what I found for you:\n"
+          for index, vendor of ary
+            result += "#{ vendor }\n"
+          return result
+
+        msg.send format(vendors)
 
