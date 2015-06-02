@@ -21,17 +21,18 @@ cheerio = require('cheerio')
 
 module.exports = (robot) ->
 
-	robot.hear /foodtruck/i, (msg) ->
+  robot.hear /foodtruck/i, (msg) ->
 
-		vendors = []
+    vendors = []
 
-		request 'http://foodtruckfiesta.com/dc-food-truck-list/', (error, response, html) ->
-  			if !error and response.statusCode == 200
-    			$ = cheerio.load(html)
-    			$('div.post-content > h2').each ->
-    				content = browser.text('', node).trim()
-      				vendors.push content
-      				return
-      		return
+    request 'http://foodtruckfiesta.com/dc-food-truck-list/', (error, response, html) ->
+      if !error and response.statusCode == 200
+        $ = cheerio.load(html)
 
-  			msg.send vendors
+        $('div.post-content > h2').each ->
+          content = browser.text('', node).trim()
+          vendors.push content
+          return
+      return
+
+    msg.send vendors
