@@ -32,7 +32,7 @@ module.exports = (robot) ->
         $('div.post-content > h2').each ->
           vendors.push $(this).text()
           return
-      return
 
-  vendor = vendors[0]
-  msg.send vendor
+        vendor = vendors[0]
+        msg.send vendor
+
