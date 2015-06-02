@@ -19,10 +19,10 @@
     "hubot-scripts": "~2.5.16",
     "hubot": "~2.12.0",
     "hubot-slack": "~3.3.0",
-    "zombie": "2.x",
-    "moment": "1.7.x"
+    "zombie": "~4.0.10",
+    "moment": "~2.10.3"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "0.12.x"
   }
 }

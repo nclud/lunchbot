@@ -26,9 +26,9 @@ module.exports = (robot) ->
         browser = new Browser({ loadCSS: false, runScripts: false })
         browser.load body, (htmlError) ->
           return msg.send 'Error' if (htmlError)
-          state = location = skip = vendor = false
+          state = location = skip = vendor = tweet = published = false
           count = 0
-          for index, node of browser.queryAll('div.post-content > h2, div.post-content > div > div > a > span')
+          for index, node of browser.queryAll('div.post-content > h2, div.post-content > div, div.post-content > div > b')
             content = browser.text('', node).trim()
             skip = true if content.match /unrecognized locations/i
             continue if skip
@@ -37,10 +37,20 @@ module.exports = (robot) ->
               location = content.split(' - ')[1]
               count = 0
               continue
-            if node._nodeName == 'span'
+            count++
+            if 1%count == 0
               vendor = content
+            else if 2%count == 0
+              tweet = content
+            else if 3%count == 0
+              states[state] ||= []
+              locations[location.toLowerCase()] ||= []
+              published = moment(content).from(moment())
+              payload = "#{ location }, #{ state } - #{ vendor } said #{ tweet } #{ published }"
+              states[state].push payload
+              locations[location.toLowerCase()].push payload
+              vendors.push payload
               count = 0
-              continue
 
           if Object.keys(states).length == 0
             return msg.send 'No food truck data found'
@@ -64,6 +74,6 @@ module.exports = (robot) ->
           found = []
           for index, vendor of vendors
             found.push(vendor) if !!vendor.match(new RegExp(query, 'i'))
-          return msg.send format found if found.length > 0
+          return msg.send format found if found.length > 0          
 
           msg.send "No trucks found matching the query '#{ query }'"
