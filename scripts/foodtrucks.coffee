@@ -2,7 +2,8 @@
 #   Tells you what food trucks are nearby, simple as that.
 #
 # Dependencies:
-#   "scraper": "0.0.9"
+#   "request": "~2.57.0"
+#   "cheerio": "~0.19.0"
 #
 # Configuration:
 #   None
