@@ -22,6 +22,7 @@
     "scraper": "0.0.9"
   },
   "engines": {
-    "node": "0.12.x"
+    // "node": "0.12.x"
+    "iojs": "2.x.x"
   }
 }
