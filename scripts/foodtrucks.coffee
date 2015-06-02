@@ -29,7 +29,8 @@ module.exports = (robot) ->
   			if !error and response.statusCode == 200
     			$ = cheerio.load(html)
     			$('div.post-content > h2').each ->
-      				vendors.push $(this).text()
+    				content = browser.text('', node).trim()
+      				vendors.push content
       				return
       		return
 
