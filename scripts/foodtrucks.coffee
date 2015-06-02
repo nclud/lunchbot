@@ -29,7 +29,7 @@ module.exports = (robot) ->
       if !error and response.statusCode == 200
         $ = cheerio.load(html)
 
-        $('div.post-content > h2:contains("DC - Franklin Square")').each ->
+        $('h2:contains("DC - Franklin Square")').nextUntil('h2').find('span').each ->
           vendors.push $(this).text()
           return
 
