@@ -33,6 +33,5 @@ module.exports = (robot) ->
           vendors.push $(this).text()
           return
 
-        vendor = vendors[0]
-        msg.send vendor
+        msg.send vendors
 
