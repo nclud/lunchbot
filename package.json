@@ -19,7 +19,9 @@
     "hubot-scripts": "~2.5.16",
     "hubot": "~2.12.0",
     "hubot-slack": "~3.3.0",
-    "scraper": "0.0.9"
+    "scraper": "0.0.9",
+    "zombie": "~4.0.10",
+    "moment": "~2.10.3"
   },
   "engines": {
     "iojs": "1.0.x"
