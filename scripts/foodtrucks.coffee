@@ -34,4 +34,4 @@ module.exports = (robot) ->
           return
       return
 
-    msg.send vendors
+    msg.send msg.random vendors
