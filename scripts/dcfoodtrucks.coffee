@@ -28,7 +28,7 @@ module.exports = (robot) ->
           return msg.send 'Error' if (htmlError)
           state = location = skip = vendor = tweet = published = false
           count = 0
-          for index, node of browser.queryAll('div.post-content > h2, div.post-content > div, div.post-content > div > b')
+          for index, node of browser.queryAll('div.post-content > h2, div.post-content > div, div.post-content > div > div > a > span')
             content = browser.text('', node).trim()
             skip = true if content.match /unrecognized locations/i
             continue if skip
@@ -74,6 +74,6 @@ module.exports = (robot) ->
           found = []
           for index, vendor of vendors
             found.push(vendor) if !!vendor.match(new RegExp(query, 'i'))
-          return msg.send format found if found.length > 0          
+          return msg.send format found if found.length > 0
 
           msg.send "No trucks found matching the query '#{ query }'"
