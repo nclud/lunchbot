@@ -30,8 +30,7 @@ module.exports = (robot) ->
         $ = cheerio.load(html)
 
         $('div.post-content > h2').each ->
-          content = browser.text('', node).trim()
-          vendors.push content
+          vendors.push $(this).text()
           return
       return
 
