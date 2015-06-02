@@ -29,14 +29,14 @@ module.exports = (robot) ->
       if !error and response.statusCode == 200
         $ = cheerio.load(html)
 
-        $('div.post-content > h2').each ->
+        $('div.post-content > h2:contains("DC - Franklin Square")').each ->
           vendors.push $(this).text()
           return
 
         format = (ary) ->
           result = "Here are the food trucks hanging out at Franklin Square today:\n"
           for index, vendor of ary
-            result += "#{ vendor }, "
+            result += "#{ vendor }\n"
           return result
 
         msg.send format(vendors)
