@@ -34,9 +34,9 @@ module.exports = (robot) ->
           return
 
         format = (ary) ->
-          result = "Here's what I found for you:\n"
+          result = "Here are the food trucks hanging out at Franklin Square today:\n"
           for index, vendor of ary
-            result += "#{ vendor }\n"
+            result += "#{ vendor }, "
           return result
 
         msg.send format(vendors)
